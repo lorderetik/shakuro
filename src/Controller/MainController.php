@@ -49,7 +49,7 @@ class MainController extends AbstractController
         }
         $user = $this->getUser();        
         
-        $form = $this->createForm(RefillType::class, ['operator' => $operator, 'balance' => $user->balance]);
+        $form = $this->createForm(RefillType::class, ['operator' => $operator, 'balance' => $user->balance ?? 0]);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid())
