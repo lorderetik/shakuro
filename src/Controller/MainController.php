@@ -41,8 +41,15 @@ class MainController extends AbstractController
      * @Route("/refill", name="app_refill")
      */
     public function refill(Request $request)
-    {        
-        $form = $this->createForm(RefillType::class );
+    {                
+        $operatorId = $request->get('operator_id');
+        $operator = null;
+        if ($operatorId) {
+            $operator = $this->getDoctrine()->getRepository(Operator::class)->find($operatorId);
+        }
+        $user = $this->getUser();        
+        
+        $form = $this->createForm(RefillType::class, ['operator' => $operator, 'balance' => $user->balance]);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid())

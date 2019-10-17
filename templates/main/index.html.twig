@@ -14,7 +14,7 @@
     <ul>
         
         {% for operator in operators %}
-            <li>#{{ operator.id }} - <a href="/refill">{{ operator.name }}</a></li>
+            <li>#{{ operator.id }} - <a href="/refill?operator_id={{ operator.id }}">{{ operator.name }}</a></li>
         {% endfor %}
     </ul>
     

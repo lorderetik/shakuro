@@ -37,4 +37,13 @@ class Operator
 
         return $this;
     }
+    
+    public function __toString() {
+      return $this->getOperators();
+    }
+    
+    public function getOperators()
+    {
+        return $this->name;
+    }
 }
